@@ -119,7 +119,7 @@ public class ControladorPrincipalGui implements ActionListener {
         controladorLogin = new ControladorLogin(principalGui, ingresoGui);
         controladorLogin.start();//inicio el thread para la pantalla login asií se carga todo mientras inicias sesion
         principalGui.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        //ingresoGui.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        ingresoGui.setExtendedState(JFrame.MAXIMIZED_BOTH);
         principalGui.setCursor(Cursor.WAIT_CURSOR); //cambio el cursor por si se inicia sesión antes de cargar las cosas
 
         socios = new BusquedaGui();
