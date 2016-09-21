@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,6 +53,17 @@ public class IngresoGui extends javax.swing.JFrame {
          }*/
        // Iniciar();
         //start();
+        
+        Thread thread = new Thread(){
+            public void run(){
+                Calendar now = Calendar.getInstance();
+                while (true){
+                    horaTxt.setText(now.get(Calendar.HOUR_OF_DAY) + ":" + now.get(Calendar.MINUTE)+" Hs");
+                }
+            }
+        };
+
+        thread.start();
     }
         
     public void limpiar(){
@@ -159,6 +171,7 @@ public class IngresoGui extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        horaTxt = new javax.swing.JLabel();
         panelImage1 = new org.edisoncor.gui.panel.PanelImage();
         panelImage2 = new org.edisoncor.gui.panel.PanelImage();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -336,15 +349,24 @@ public class IngresoGui extends javax.swing.JFrame {
         jLabel2.setMinimumSize(new java.awt.Dimension(340, 44));
         jLabel2.setPreferredSize(new java.awt.Dimension(340, 44));
 
+        horaTxt.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        horaTxt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        horaTxt.setText("00:00");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(horaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(horaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo_chico.png"))); // NOI18N
@@ -994,6 +1016,7 @@ public class IngresoGui extends javax.swing.JFrame {
     private javax.swing.JLabel fechaUltPago;
     private javax.swing.JLabel fechaVence;
     private javax.swing.JMenuItem gestAsis;
+    private javax.swing.JLabel horaTxt;
     private org.edisoncor.gui.panel.PanelImage imHuella;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel36;

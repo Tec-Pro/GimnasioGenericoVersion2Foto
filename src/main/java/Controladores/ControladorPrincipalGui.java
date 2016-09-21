@@ -37,6 +37,7 @@ import Interfaces.EstadisticaGui;
 import Interfaces.GastosGui;
 import Interfaces.GuiCrearRutina;
 import Interfaces.GuiEjercicios;
+import Interfaces.HoraGui;
 import Interfaces.MovimientosDelDiaGui;
 import Interfaces.ProveedorGui;
 import Modelos.User;
@@ -74,6 +75,7 @@ public class ControladorPrincipalGui implements ActionListener {
     private ControladorCargarVentaGUI controladorCargarVentaGUI;
     private CumpleaniosGui cumpleGui;
     private CargarDatosEmail emailGui;
+    private HoraGui horaGui;
 
     private ControladorProveedor controladorProveedor;
     private ProveedorGui proveedorGui;
@@ -117,7 +119,7 @@ public class ControladorPrincipalGui implements ActionListener {
         controladorLogin = new ControladorLogin(principalGui, ingresoGui);
         controladorLogin.start();//inicio el thread para la pantalla login asií se carga todo mientras inicias sesion
         principalGui.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        ingresoGui.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //ingresoGui.setExtendedState(JFrame.MAXIMIZED_BOTH);
         principalGui.setCursor(Cursor.WAIT_CURSOR); //cambio el cursor por si se inicia sesión antes de cargar las cosas
 
         socios = new BusquedaGui();
@@ -168,6 +170,12 @@ public class ControladorPrincipalGui implements ActionListener {
 
         principalGui.getDesktop().add(cumpleGui);
         principalGui.setCursor(Cursor.DEFAULT_CURSOR);
+        
+        horaGui = new HoraGui();
+        principalGui.getDesktop().add(horaGui);
+        horaGui.setVisible(true);
+        
+        
     }
 
     @Override
